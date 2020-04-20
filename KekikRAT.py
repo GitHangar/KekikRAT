@@ -16,7 +16,7 @@ KekikRAT = Client(
 adminID = 717569643
 
 @KekikRAT.on_message(Filters.command(['start'], ['!','.','/']))
-def ilk(client, message):
+def start(client, message):
     # Hoş Geldin Mesajı
     message.reply_chat_action("typing")
     message.reply(f"☣ **KekikRAT** ☣\n\nBütün veriler [Patron](tg://user?id={adminID})'a Gönderilecek!")
@@ -25,7 +25,7 @@ def ilk(client, message):
     log = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id}) | Bota Bağlantı Sağladı"
     client.send_message(adminID, log)
 
-@KekikRAT.on_message(Filters.command(['eklenti'], ['!','.','/']))
+@KekikRAT.on_message(Filters.command(['komut'], ['!','.','/']))
 def eklentiGonder(client, message):
     mesaj = client.send_message(adminID,"Bekleyin..")
     girilenYazi = message.text
