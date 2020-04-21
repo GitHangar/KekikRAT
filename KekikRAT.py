@@ -9,11 +9,11 @@ KekikRAT = Client(
     api_id=XXXXXX,                                  # my.telegram.org/apps
     api_hash="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",    # my.telegram.org/apps
     session_name = "@XXXXXXXX",                     # Fark Etmez
-    bot_token = "XXXXXXX:XXXXXXXXXX",
+    bot_token = "XXXXXXX:XXXXXXXXXX",               # @BotFather
     plugins=dict(root="Eklentiler")
 )
 
-adminID = 717569643
+adminID = 717569643                                 # Kendi Kullanıcı id'niz
 
 @KekikRAT.on_message(Filters.command(['start'], ['!','.','/']))
 def start(client, message):
